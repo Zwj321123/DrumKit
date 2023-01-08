@@ -1,15 +1,11 @@
-document.addEventListener("keypress", function(event){
+
+
+$("button").on("keypress", function(event){
     makeSound(event.key);
     buttonAnimation(event.key);
 });
 
-
-
-const list = document.querySelectorAll("button");
-
-for(var i = 0; i < list.length; i++){
-    list[i].addEventListener("click", handleClick);
-}
+$("button").on("click", handleClick);
 
 
 function handleClick(){
@@ -60,11 +56,11 @@ function makeSound(key){
 
 function buttonAnimation(currentKey){
     var activeButton = document.querySelector("." + currentKey);
-
-    activeButton.classList.add("pressed");
-
+    $(activeButton).classList.add("pressed");
+    $(activeButton).animate({height: "300px"});
     setTimeout(()=> {
         activeButton.classList.remove("pressed");
+        $(activeButton).animate({height: "150px"});
     }, 100);
 
 }
